@@ -2,7 +2,7 @@
 Eslint custom rules
 
 ## How to install
-1. Add to package.json devDependences this line:
+1. Add to package.json "devDependences" this line:
 
 ```
 "eslint-plugin-nomeus": "github:Oktopost/Nomeus",
@@ -18,4 +18,4 @@ Eslint custom rules
  ```
  
  ## Rules
-There is only one ("semi") rule so far, it inherited from standart eslint "semi" rule, but exclude semicolons for objects ans functions.
+There is only one ("semi") rule so far, it inherited from standart eslint "semi" rule, but exclude semicolons for objects and functions.
