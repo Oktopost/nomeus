@@ -402,6 +402,21 @@ module.exports = {
 			checkForSemicolon(node);
 		}
 
+		/**
+		 * @param {ASTNode} node The node to check.
+		 * @returns {void}
+		 */
+		function checkForReturnStatement(node) {
+			const argumentType = node.argument?.type;
+			const argumentBody = node.argument?.body?.type;
+
+			if (argumentType === "ObjectExpression" || argumentBody === "BlockStatement") {
+				return;
+			}
+
+			checkForSemicolon(node);
+		}
+
 		//--------------------------------------------------------------------------
 		// Public API
 		//--------------------------------------------------------------------------
@@ -409,7 +424,7 @@ module.exports = {
 		return {
 			VariableDeclaration: checkForSemicolonForVariableDeclaration,
 			ExpressionStatement: checkForExpressionStatement,
-			ReturnStatement: checkForSemicolon,
+			ReturnStatement: checkForReturnStatement,
 			ThrowStatement: checkForSemicolon,
 			DoWhileStatement: checkForSemicolon,
 			DebuggerStatement: checkForSemicolon,
