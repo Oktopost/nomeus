@@ -340,16 +340,6 @@ module.exports = {
 		 * @returns {void}
 		 */
 		function checkForSemicolon(node) {
-			const declarations = node.declarations || [];
-			const declarationType = declarations[0]?.init?.type;
-			const declarationBodyType = declarations[0]?.init?.body?.type;
-
-			if (
-				declarationType === "ObjectExpression" ||
-				declarationBodyType === "BlockStatement") {
-				return;
-			}
-
 			const isSemi = astUtils.isSemicolonToken(sourceCode.getLastToken(node));
 
 			if (never) {
@@ -381,11 +371,35 @@ module.exports = {
 		function checkForSemicolonForVariableDeclaration(node) {
 			const parent = node.parent;
 
+			const declarations = node.declarations || [];
+			const declarationType = declarations[0]?.init?.type;
+			const declarationBodyType = declarations[0]?.init?.body?.type;
+
+			if (
+				declarationType === "ObjectExpression" ||
+				declarationBodyType === "BlockStatement") {
+				return;
+			}
+
 			if ((parent.type !== "ForStatement" || parent.init !== node) &&
 				(!/^For(?:In|Of)Statement/u.test(parent.type) || parent.left !== node)
 			) {
 				checkForSemicolon(node);
 			}
+		}
+
+		/**
+		 * @param {ASTNode} node The node to check.
+		 * @returns {void}
+		 */
+		function checkForExpressionStatement(node) {
+			const rightType = node.expression?.right?.type;
+
+			if (rightType === "ObjectExpression" || rightType === "BlockStatement") {
+				return;
+			}
+
+			checkForSemicolon(node);
 		}
 
 		//--------------------------------------------------------------------------
@@ -394,7 +408,7 @@ module.exports = {
 
 		return {
 			VariableDeclaration: checkForSemicolonForVariableDeclaration,
-			ExpressionStatement: checkForSemicolon,
+			ExpressionStatement: checkForExpressionStatement,
 			ReturnStatement: checkForSemicolon,
 			ThrowStatement: checkForSemicolon,
 			DoWhileStatement: checkForSemicolon,
