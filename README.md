@@ -18,4 +18,4 @@ Eslint custom rules
  ```
  
  ## Rules
-There is only one ("semi") rule so far, it inherited from standart eslint "semi" rule, but exclude semicolons for objects and functions.
+There is only one ("semi") rule so far, it inherited from standart eslint "semi" rule, but exclude semicolons for objects, functions and default exports.
