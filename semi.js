@@ -408,11 +408,6 @@ module.exports = {
 					checkForSemicolon(node);
 				}
 			},
-			ExportDefaultDeclaration(node) {
-				if (!/(?:Class|Function)Declaration/u.test(node.declaration.type)) {
-					checkForSemicolon(node);
-				}
-			},
 			PropertyDefinition: checkForSemicolon
 		};
 
