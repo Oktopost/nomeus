@@ -5,7 +5,7 @@ Eslint custom rules
 1. Add to package.json "devDependences" this line:
 
 ```
-"eslint-plugin-nomeus": "github:Oktopost/Nomeus",
+"eslint-plugin-nomeus": "github:Oktopost/nomeus",
 ```
 
 2. Add to .eslinrc.js "nomeus" plugin and rule:
