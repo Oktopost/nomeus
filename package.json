@@ -1,5 +1,9 @@
 {
 	"name": "eslint-plugin-nomeus",
 	"version": "1.0.0",
-	"main": "index.js"
+	"main": "index.js",
+	"peerDependencies": {
+		"eslint": "^9.34.0",
+		"eslint-plugin-vue": "^10.4.0"
+	}
 }

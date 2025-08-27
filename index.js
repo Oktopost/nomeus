@@ -5,6 +5,7 @@ module.exports = {
 	rules: {},
 	configs: {
 		recommended: {
+			plugins: ['vue'],
 			rules: {
 				quotes: ['error', 'single'],
 				indent: ['error', 'tab', {
