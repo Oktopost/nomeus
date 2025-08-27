@@ -182,7 +182,7 @@ const nomeusRules = {
 			alphabetical: false
 		}
 	],
-	'vue/component-tags-order': [
+	'vue/block-order': [
 		'error',
 		{
 			'order': ['script', 'template', 'style']
