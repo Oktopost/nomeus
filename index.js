@@ -190,7 +190,7 @@ const nomeusRules = {
 };
 
 export default [
-	...eslintPluginVue.configs['flat/base'],
+	...eslintPluginVue.configs['flat/vue2-recommended'],
 	{
 		plugins: {
 			vue: eslintPluginVue
