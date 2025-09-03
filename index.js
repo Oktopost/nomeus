@@ -16,7 +16,7 @@ const nomeusRules = {
 		allowSingleLine: true
 	}],
 	'object-curly-spacing': ['error', 'always'],
-	'arrow-parens': ['error', 'as-needed'],
+	'arrow-parens': 'off',
 	'space-before-blocks': ['error', 'always'],
 	'space-before-function-paren': ['error', 'never'],
 	'space-in-parens': ['error', 'never'],
