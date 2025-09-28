@@ -4,7 +4,7 @@ Oktpost eslint rules
 Add to package.json "devDependencies" this line:
 
 ```
-"styles-plugin-nomeus": "github:Oktopost/nomeus",
+"oktopost-nomeus": "github:Oktopost/nomeus",
 ```
 
 Create an eslint.config.mjs file in your project's root.
@@ -12,7 +12,7 @@ Create an eslint.config.mjs file in your project's root.
 The example below applies the rules only to files inside the src/vue directory.
 
 ```
-import nomeusConfig from 'styles-plugin-nomeus';
+import nomeusConfig from 'oktopost-nomeus';
 
 export default [
     ...nomeusConfig.map(config => ({
