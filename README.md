@@ -1,12 +1,10 @@
 # Nomeus
 Oktpost eslint rules
 ## How to install
-Add to package.json "devDependences" this line:
+Add to package.json "devDependencies" this line:
 
 ```
-"eslint": "^9.34.0",
 "eslint-plugin-nomeus": "github:Oktopost/nomeus",
-"eslint-plugin-vue": "^10.4.0"
 ```
 
 Create an eslint.config.mjs file in your project's root.
@@ -23,3 +21,22 @@ export default [
     }))
 ];
 ```
+
+
+## 💻 IDE Setup
+
+To get real-time error highlighting and auto-formatting, configure your IDE to work with ESLint and Prettier.
+
+### For PHPStorm / WebStorm (and other JetBrains IDEs)
+
+1.  **ESLint**:
+    * Navigate to `Settings` -> `Languages & Frameworks` -> `JavaScript` -> `Code Quality Tools` -> `ESLint`.
+    * Enable **`Automatic ESLint configuration`**. The IDE will automatically find and use your `eslint.config.js` file.
+
+2.  **Prettier**:
+    * Navigate to `Settings` -> `Languages & Frameworks` -> `JavaScript` -> `Prettier`.
+    * Enable **`Manual Prettier configuration`**. Add path to `node_modules/eslint-plugin-nomeus`.
+
+3.  **Enable Format on Save (Important!)**:
+    * Navigate to `Settings` -> `Tools` -> `Actions on Save`.
+    * Check the box for **`Reformat code`**. This will run Prettier every time you save a file.
