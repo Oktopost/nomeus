@@ -4,6 +4,7 @@ const config = {
 	useTabs: true,
 	semi: true,
 	singleQuote: true,
+	bracketSameLine: false,
 	bracketSpacing: true,
 	endOfLine: 'lf'
 };
