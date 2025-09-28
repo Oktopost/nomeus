@@ -24,6 +24,10 @@ const nomeusRules = {
 			'methods', 'LIFECYCLE_HOOKS', ['template', 'render'], 'renderError'
 		]
 	}],
+	'vue/html-closing-bracket-newline': ['error', {
+		singleline: 'never',
+		multiline: 'always'
+	}],
 	'vue/attributes-order': ['error', {
 		order: [
 			'CONDITIONALS', 'DEFINITION', 'LIST_RENDERING', 'RENDER_MODIFIERS',
