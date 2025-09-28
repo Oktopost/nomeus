@@ -1,6 +1,7 @@
 "use strict";
 
 import eslintPluginVue from 'eslint-plugin-vue';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 
 const nomeusRules = {
@@ -196,5 +197,6 @@ export default [
 			vue: eslintPluginVue
 		},
 		rules: nomeusRules
-	}
+	},
+	eslintConfigPrettier
 ];

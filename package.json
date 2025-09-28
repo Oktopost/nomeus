@@ -1,10 +1,17 @@
 {
 	"name": "eslint-plugin-nomeus",
 	"version": "1.0.0",
+    "description": "A shared ESLint and Prettier configuration",
 	"main": "index.js",
 	"type": "module",
-	"peerDependencies": {
-		"eslint": "^9.34.0",
-		"eslint-plugin-vue": "^10.4.0"
-	}
+    "files": [
+      "index.js",
+      "prettier.config.js"
+    ],
+    "dependencies": {
+      "eslint": "^9.0.0",
+      "eslint-config-prettier": "^9.1.0",
+      "eslint-plugin-vue": "^9.26.0",
+      "prettier": "^3.3.2"
+    }
 }
