@@ -1,5 +1,5 @@
 {
-	"name": "oktopost-nomeus",
+	"name": "@oktopost/eslint-plugin-nomeus",
 	"version": "1.0.0",
     "description": "A shared ESLint and Prettier configuration",
 	"main": "index.js",
