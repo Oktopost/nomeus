@@ -6,7 +6,8 @@ const config = {
 	singleQuote: true,
 	bracketSameLine: false,
 	bracketSpacing: true,
-	endOfLine: 'lf'
+	endOfLine: 'lf',
+	singleAttributePerLine: true
 };
 
 export default config;

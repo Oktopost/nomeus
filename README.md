@@ -4,7 +4,7 @@ Oktpost eslint rules
 Add to package.json "devDependencies" this line:
 
 ```
-"oktopost-nomeus": "github:Oktopost/nomeus",
+"@oktopost/eslint-plugin-nomeus": "^1.0.3",
 ```
 
 Create an eslint.config.mjs file in your project's root.
@@ -12,7 +12,7 @@ Create an eslint.config.mjs file in your project's root.
 The example below applies the rules only to files inside the src/vue directory.
 
 ```
-import nomeusConfig from 'oktopost-nomeus';
+import nomeusConfig from '@oktopost/eslint-plugin-nomeus';
 
 export default [
     ...nomeusConfig.map(config => ({
@@ -20,6 +20,18 @@ export default [
        files: ['src/vue/**/*.{js,vue}']
     }))
 ];
+```
+
+Create an .prettierrc.js file in your project's root.
+
+The example below applies the rules only to files inside the src/vue directory.
+
+```
+const configPromise = import('@oktopost/eslint-plugin-nomeus/prettier.config.js');
+
+module.exports = configPromise.then(importedConfig => {
+	return importedConfig.default || importedConfig;
+});
 ```
 
 
@@ -35,7 +47,7 @@ To get real-time error highlighting and auto-formatting, configure your IDE to w
 
 2.  **Prettier**:
     * Navigate to `Settings` -> `Languages & Frameworks` -> `JavaScript` -> `Prettier`.
-    * Enable **`Manual Prettier configuration`**. Add path to `node_modules/eslint-plugin-nomeus`.
+    * Enable **`Automatic Prettier configuration`**. The IDE will automatically find and use your `.prettierrc.js` file.
 
 3.  **Enable Format on Save (Important!)**:
     * Navigate to `Settings` -> `Tools` -> `Actions on Save`.
