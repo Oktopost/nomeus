@@ -48,7 +48,7 @@ const nomeusRules = {
 
 export function createConfig(vueVersion = 2) {
 	const vueConfig = vueVersion === 3
-		? eslintPluginVue.configs['flat/vue3-recommended']
+		? eslintPluginVue.configs['flat/recommended']
 		: eslintPluginVue.configs['flat/vue2-recommended'];
 
 	return [
