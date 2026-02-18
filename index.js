@@ -1,5 +1,5 @@
 import eslintPluginVue from 'eslint-plugin-vue';
-import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 const nomeusRules = {
 	'no-param-reassign': 'error',
@@ -46,10 +46,16 @@ const nomeusRules = {
 	]
 };
 
-export default [
-	...eslintPluginVue.configs['flat/vue2-recommended'],
-	{
-		rules: nomeusRules
-	},
-	eslintConfigPrettier
-];
+export function createConfig(vueVersion = 2) {
+	const vueConfig = vueVersion === 3
+		? eslintPluginVue.configs['flat/vue3-recommended']
+		: eslintPluginVue.configs['flat/vue2-recommended'];
+
+	return [
+		...vueConfig,
+		{ rules: nomeusRules },
+		eslintConfigPrettier
+	];
+}
+
+export default createConfig(2);
