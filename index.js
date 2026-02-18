@@ -1,8 +1,5 @@
-"use strict";
-
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintConfigPrettier from 'eslint-config-prettier';
-
 
 const nomeusRules = {
 	'no-param-reassign': 'error',
@@ -52,9 +49,6 @@ const nomeusRules = {
 export default [
 	...eslintPluginVue.configs['flat/vue2-recommended'],
 	{
-		plugins: {
-			vue: eslintPluginVue
-		},
 		rules: nomeusRules
 	},
 	eslintConfigPrettier
