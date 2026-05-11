@@ -6,6 +6,7 @@ const nomeusRules = {
 	'require-await': 'error',
 	'prefer-const': 'warn',
 	'default-case': 'error',
+	'vue/no-v-html': 'off',
 	'no-empty-pattern': ['error', {
 		allowObjectPatternsAsParameters: true
 	}],
