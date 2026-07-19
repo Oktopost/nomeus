@@ -11,6 +11,8 @@ const nomeusRules = {
 		allowObjectPatternsAsParameters: true
 	}],
 	'vue/require-default-prop': 'off',
+	'vue/prefer-true-attribute-shorthand': 'error',
+	'vue/no-useless-v-bind': 'error',
 	'vue/order-in-components': ['error', {
 		'order': [
 			'el', 'name', 'key', 'parent', 'functional', ['delimiters', 'comments'],
