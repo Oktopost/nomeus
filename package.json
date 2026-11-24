@@ -1,17 +1,30 @@
 {
 	"name": "@oktopost/eslint-plugin-nomeus",
-	"version": "1.0.0",
-    "description": "A shared ESLint and Prettier configuration",
+	"version": "2.0.0",
+	"description": "Shared ESLint and Prettier configuration for Oktopost Vue 3 projects",
 	"main": "index.js",
 	"type": "module",
-    "files": [
-      "index.js",
-      "prettier.config.js"
-    ],
-    "dependencies": {
-      "eslint": "10.2.0",
-      "eslint-config-prettier": "10.1.8",
-      "eslint-plugin-vue": "10.8.0",
-      "prettier": "3.8.2"
-    }
+	"files": [
+		"index.js",
+		"prettier.config.js"
+	],
+	"scripts": {
+		"test": "node --test"
+	},
+	"peerDependencies": {
+		"eslint": "^10.15.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-vue": "^10.8.0",
+		"prettier": "^3.8.0"
+	},
+	"peerDependenciesMeta": {
+		"prettier": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"eslint": "10.15.0",
+		"eslint-config-prettier": "10.1.8",
+		"eslint-plugin-vue": "10.12.1"
+	}
 }
