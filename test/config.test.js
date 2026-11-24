@@ -54,9 +54,10 @@ test('a broken Vue 3 component reports the nomeus rules as errors', async () => 
 	}
 });
 
-test('a broken module reports prefer-const as a warning', async () => {
+test('a broken module reports the nomeus rules, prefer-const as a warning', async () => {
 	const reported = await severities('broken.js');
 
+	assert.equal(reported.get('no-empty-pattern'), 2);
 	assert.equal(reported.get('prefer-const'), 1);
 	assert.equal(reported.get('padding-line-between-statements'), 2);
 });
