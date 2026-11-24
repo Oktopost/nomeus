@@ -1,10 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 
-const props = defineProps({
-	label: String,
-	html: String
-});
+const props = defineProps({ label: String, html: String });
 
 const title = computed(() => {
 	if (!props.label) {
@@ -16,5 +13,5 @@ const title = computed(() => {
 </script>
 
 <template>
-	<a v-html="html" class="link" href="/" :title="title"></a>
+	<a v-html="html" class="link" href="/" :title="title" :aria-label="title"></a>
 </template>

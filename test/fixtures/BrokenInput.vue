@@ -4,10 +4,11 @@
 
 <script>
 export default {
+	name: 'BrokenInput',
 	data() {
 		return { count: 1 };
 	},
-	name: 'BrokenInput',
+	mounted() {},
 	destroyed() {},
 	methods: {
 		async load(value) {
