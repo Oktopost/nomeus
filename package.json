@@ -11,15 +11,14 @@
 	"main": "index.js",
 	"exports": {
 		".": "./index.js",
-		"./prettier.config.js": "./prettier.config.js",
-		"./package.json": "./package.json"
+		"./prettier.config.js": "./prettier.config.js"
 	},
 	"files": [
 		"index.js",
 		"prettier.config.js"
 	],
 	"engines": {
-		"node": "^20.19.0 || ^22.13.0 || >=24"
+		"node": ">=24"
 	},
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"
