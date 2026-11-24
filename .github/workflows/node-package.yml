@@ -1,33 +1,49 @@
 name: Node.js Package
 
 on:
-  push:
-    tags:
-      - '*'
+    push:
+        tags:
+            - '*'
+
+permissions: {}
 
 jobs:
-  publish-gpr:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v4
+    publish-gpr:
+        runs-on: ubuntu-latest
+        environment: release
+        permissions:
+            contents: read
+            packages: write
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version-file: .nvmrc
+                  registry-url: https://npm.pkg.github.com/
+                  scope: '@oktopost'
 
-      - run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+            - name: Check the tag is the package.json version of a commit on main
+              run: |
+                  TAG_VERSION=${GITHUB_REF#refs/tags/}
+                  PACKAGE_VERSION=$(node -p "require('./package.json').version")
+                  test "$TAG_VERSION" = "$PACKAGE_VERSION" || { echo "Tag $TAG_VERSION does not match package.json $PACKAGE_VERSION"; exit 1; }
+                  git merge-base --is-ancestor "$GITHUB_SHA" origin/main || { echo "Tag $TAG_VERSION points to a commit that is not on main"; exit 1; }
 
-      - name: Set version from tag
-        run: |
-          TAG_VERSION=${GITHUB_REF#refs/tags/}
-          npm version "$TAG_VERSION" --no-git-tag-version
+            - run: npm ci --ignore-scripts
 
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+            - run: npm run lint
+
+            - run: npm test
+
+            - name: Publish
+              run: |
+                  case "$(node -p "require('./package.json').version")" in
+                    *-*) npm publish --tag next ;;
+                    *) npm publish ;;
+                  esac
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

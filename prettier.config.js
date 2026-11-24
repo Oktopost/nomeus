@@ -3,7 +3,7 @@ const config = {
 	tabWidth: 4,
 	useTabs: true,
 	singleQuote: true,
-	singleAttributePerLine: true
+	singleAttributePerLine: true,
 };
 
 export default config;

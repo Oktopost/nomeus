@@ -1,17 +1,48 @@
 {
 	"name": "@oktopost/eslint-plugin-nomeus",
-	"version": "1.0.0",
-    "description": "A shared ESLint and Prettier configuration",
-	"main": "index.js",
+	"version": "2.0.0",
+	"description": "Shared ESLint and Prettier configuration for Oktopost Vue 3 projects",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Oktopost/nomeus.git"
+	},
 	"type": "module",
-    "files": [
-      "index.js",
-      "prettier.config.js"
-    ],
-    "dependencies": {
-      "eslint": "10.2.0",
-      "eslint-config-prettier": "10.1.8",
-      "eslint-plugin-vue": "10.8.0",
-      "prettier": "3.8.2"
-    }
+	"main": "index.js",
+	"exports": {
+		".": "./index.js",
+		"./prettier.config.js": "./prettier.config.js"
+	},
+	"files": [
+		"index.js",
+		"prettier.config.js"
+	],
+	"engines": {
+		"node": ">=24"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"format:check": "prettier --check .",
+		"test": "node --test test/*.test.js"
+	},
+	"peerDependencies": {
+		"eslint": "^10.15.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-vue": "^10.8.0",
+		"prettier": "^3.8.0"
+	},
+	"peerDependenciesMeta": {
+		"prettier": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"eslint": "10.15.0",
+		"eslint-config-prettier": "10.1.8",
+		"eslint-plugin-vue": "10.12.1",
+		"prettier": "3.9.10"
+	}
 }
