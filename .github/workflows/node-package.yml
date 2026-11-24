@@ -12,21 +12,24 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           registry-url: https://npm.pkg.github.com/
 
       - run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Set version from tag
+      - run: npm test
+
+      - name: Check the tag matches package.json
         run: |
           TAG_VERSION=${GITHUB_REF#refs/tags/}
-          npm version "$TAG_VERSION" --no-git-tag-version
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          test "$TAG_VERSION" = "$PACKAGE_VERSION" || { echo "Tag $TAG_VERSION does not match package.json $PACKAGE_VERSION"; exit 1; }
 
       - run: npm publish
         env:
